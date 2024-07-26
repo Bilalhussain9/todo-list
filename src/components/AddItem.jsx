@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { IoIosAddCircleOutline } from "react-icons/io";
  const AddItem=({tododata})=>{
-    let [name,setname]=useState("");
-    let [date,setdate]=useState("");
+    let name=useRef();
+    let date=useRef();
+ 
 
     let datahandle=(event)=>{
         // console.log(event);
          event.preventDefault();
+         const todoname=name.current.value;
+         const tododate=date.current.value;
         if(name !=="" && date!==""){
-            tododata(name ,date);
-            setname("");
-            setdate("");
+            tododata(todoname ,tododate);
 
         } 
     } 
@@ -20,10 +21,11 @@ import { IoIosAddCircleOutline } from "react-icons/io";
     return<form className="row justify-content-center" onSubmit={datahandle}>
     
     <div className="col-6">
-        <input type="text" placeholder="enter todo-list" value={name} onChange={(e)=>setname(e.target.value)}  className=""/>
+        <input type="text" placeholder="enter todo-list"
+          ref={name}  className=""/>
     </div>
     <div className="col-2">
-        <input type="date"  value={date}  onChange={(e)=>setdate(e.target.value)}  />
+        <input type="date"    ref={date}  />
     </div>
     <div className="col-2">
     <button  className="btn btn-primary" ><IoIosAddCircleOutline /></button>
