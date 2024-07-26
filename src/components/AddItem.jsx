@@ -10,6 +10,9 @@ import { IoIosAddCircleOutline } from "react-icons/io";
          event.preventDefault();
          const todoname=name.current.value;
          const tododate=date.current.value;
+         name.current.value="";
+         date.current.value="";
+
         if(name !=="" && date!==""){
             tododata(todoname ,tododate);
 

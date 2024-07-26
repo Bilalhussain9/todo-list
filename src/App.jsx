@@ -4,10 +4,16 @@ import TodoItems from "./components/TodoItems";
 
 function App() {
   let [datafrominput, datasho] = useState([]);
+  
+  // let newdata = (name, date) => {
+  //   let datasharefrom = { name, date };
+  //   // console.log(datasharefrom)
+  //   datasho([...datafrominput, datasharefrom]);
+  // };
+
+  // functional update
   let newdata = (name, date) => {
-    let datasharefrom = { name, date };
-    // console.log(datasharefrom)
-    datasho([...datafrominput, datasharefrom]);
+    datasho((newdatafrominpu) => [...newdatafrominpu, { name, date }]);
   };
   // let deletedata=(indexdata)=>{
   //       let newdeletedata=[...datafrominput];
@@ -15,19 +21,9 @@ function App() {
   //       datasho(newdeletedata);
   // }
   let deletedata = (indexitem) => {
-    let newdeleteitem = datafrominput.filter((item,i) => i!== indexitem);
+    let newdeleteitem = datafrominput.filter((item, i) => i !== indexitem);
     datasho(newdeleteitem);
   };
-  // let tododata=[
-  //   {
-  //     name:"bilal",
-  //     date:'10.2.2024'
-  //   },
-  //   {
-  //     name:"khan",
-  //     date:'13 .2.2024'bo
-  //   },
-  // ]
 
   return (
     <>
