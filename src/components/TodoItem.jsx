@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { MdDelete } from "react-icons/md";
-const TodoItem=({index,todoname,tododate,deledatafromarry})=>{
-
+import { TodoItemStore } from "../store/TodoItemStore";
+const TodoItem=({index,todoname,tododate})=>{
+let {DeleteItems}=useContext(TodoItemStore)
 return <>
      <div className="row justify-content-center m-2">
      <div className="col-3">
@@ -10,7 +12,7 @@ return <>
         {tododate}
       </div>
       <div className="col-2">
-      <button type="button" className="btn btn-danger" onClick={()=>deledatafromarry(index)}><MdDelete /></button>
+      <button type="button" className="btn btn-danger" onClick={()=>DeleteItems(index)}><MdDelete /></button>
       </div>
      </div>
 </>

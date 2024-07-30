@@ -1,9 +1,10 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { IoIosAddCircleOutline } from "react-icons/io";
- const AddItem=({tododata})=>{
+import { TodoItemStore } from "../store/TodoItemStore";
+ const AddItem=()=>{
     let name=useRef();
     let date=useRef();
- 
+    let {NewitemAdd}=useContext(TodoItemStore)
 
     let datahandle=(event)=>{
         // console.log(event);
@@ -14,7 +15,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
          date.current.value="";
 
         if(name !=="" && date!==""){
-            tododata(todoname ,tododate);
+            NewitemAdd(todoname ,tododate);
 
         } 
     } 
