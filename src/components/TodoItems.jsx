@@ -9,7 +9,7 @@ const TodoItems = () => {
     <>
       {datafrominput.map((item, index) => (
         <TodoItem
-          key={index}
+          key={item.name}
           index={index}
           todoname={item.name}
           tododate={item.date}
